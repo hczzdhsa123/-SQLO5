@@ -1,0 +1,33 @@
+using System;
+
+namespace ConsoleApp1
+{
+    public class UserSys
+    {
+        public delegate void DLogin(object o, int n);
+        DLogin _elogin;
+        public event DLogin ELogin
+        {
+            add
+            { _elogin += value; }
+            remove
+            { _elogin += value; }
+        }
+        int n = 0;
+        public void login()
+        {
+            _elogin(this, ++n);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            UserSys user = new UserSys();
+            user.ELogin+=(o,n)=> Console.WriteLine($"1000{n}登录{o}成功");
+            user.login();
+            user.login();
+            user.login();
+        }
+    }
+}
