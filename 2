@@ -1,0 +1,19 @@
+using System;
+using System.Numerics;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string str1 = "C#,java,python,golang,javascript,PHP,VB";
+            string[] str2 = str1.Split(',');
+            Array.Sort(str2, (a, b) => string.Compare(b.ToString(), a.ToString()));
+            foreach (var i in str1)
+                str1 += i.ToString();
+            string str3 = string.Join(",", str2);
+            Console.WriteLine(str3);
+        }
+    }
+}
